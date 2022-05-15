@@ -1,0 +1,31 @@
+body 
+
+.fa-home {
+  content: url('/images/Logos/home.png');
+  width: 100 !important;
+  height: 60px !important;
+}
+
+.fa-dc {
+  content: url('/images/Logos/DC.png');
+  width: 50 !important;
+  height: 30px !important;
+}
+
+.fa-marvel {
+  content: url('/images/Logos/Marvel.png');
+  width: 50 !important;
+  height: 30px !important;
+}
+
+.fa-movies {
+  content: url('/images/Logos/Movies.png');
+  width: 50 !important; 
+  height: 30px !important;
+}
+
+.fa-contact {
+  content: url('/images/Logos/contact.png');
+  width: 50 !important; 
+  height: 40px !important;
+}

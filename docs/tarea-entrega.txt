@@ -1,0 +1,58 @@
+Idea de proyecto a entregar: SPA para almacenar informacion de personajes y de peliculas de comics de Marvel y DC.
+
+La SPA incluira:
+
+* Información resumida de los superhéroes en cards, mostrando nombre, nombre del personaje (si tiene), y biografía truncada.
+* Contara además con una vista en detalle de cada personaje, accedida mediante cada card.
+* En la vista de detalle aquellos superhéroes que tienen más de una imagen deberá tener un carrusel para mostrar todas las imágenes.
+* De cada superhéroe se conoce, nombre, nombre del personajes (puede tener o no), año de aparición, casa a la que pertenece, breve biografía, equipamiento (si tiene), cantidad de imágenes (debe tener al menos una imagen).
+* Mostrara el logo de la casa de cada superhéroe en la vista de detalle.
+* Permitira cargar, actualizar y eliminar superhéroes.
+* Tendra carteles de información de éxito o fracaso cada vez que realizamos una de las operaciones del punto anterior.
+* Contara con las rutas / (todos los superhéroes), /marvel (solo los superhéroes de marvel), /dc (solo los superhéroes de dc).
+* Permitira realizar un filtro por los nombre de superhéroes del lado del cliente, en las vistas de cards del punto anterior.
+* Se cargaran al menos 40 superhéroes (puede agregar villanos también), al menos 10 de cada casa.
+* Mostrara el contenido de las películas en cards para mantener el mismo estilo, de cada película se conoce título, fecha de lanzamiento, una sinopsis de la misma y su correspondiente poster. Además el casting de personajes y actor que los interpreta.
+* Tendra un menú de carga de películas.
+* La carga de todos los datos de las películas se hara a partir del nombre de la misma consumiendo los datos de una api-rest ( https://www.themoviedb.org ), deberá registrarse para obtener una api-key, la información de cada película no podrá ser editada.
+* Tendra una vista de detalle de la película, en esta se mostraran los datos de los personajes y actores (opcional poner foto se obtienen desde la api de créditos) en formato de grid.
+* Permitira filtrar películas por su título del lado del cliente.
+* Se vincularan bidireccionalmente los superhéroes cargados a las películas en las que aparecen, es decir cuando entro a una película muestre los superhéroes que aparecen y cuando entramos a un superhéroes nos indique las películas en las que participo.
+
+Segun lo propuesto en la consigna del modulo 6 unidad 1: "Pensar y escribir en un archivo que sección de tu sitio va a ser dinámica y como plantearias la tabla"
+
+Me centrare en la seccion de /characters y /movies para desarrollarla con el fin de que la misma sea dinamica. La idea es poder administrar characters (personajes) y movies (peliculas) en la SPA.
+Para esto se realizarian las siguientes actividades:
+* Creación del CRUD (Create, Read, Update y Delete) de /characters (personajes).
+* Creación del CD (Create y Delete) de /movies (peliculas).
+* Creación de la tabla "charact" donde se almacenaran los characters (personajes), la cual nos servira para listar, modificar, agregar y quitar personajes.
+* Creación de la tabla "movie"  donde se almacenaran las movies (peliculas), la cual nos servira para listar, agregar y quitar peliculas.
+
+* La tabla charact contará con los siguientes campos:
+    - id_charact: int NOT NULL AUTO_INCREMENT.
+    - name: varchar(250) DEFAULT NULL.
+    - character_name: varchar(250) DEFAULT NULL.
+    - year_of_appearance: varchar(250) DEFAULT NULL.
+    - house: varchar(250) DEFAULT NULL.
+    - biography: text.
+    - equipment: json DEFAULT NULL.
+    - amount_images: varchar(250) DEFAULT NULL.
+    - images: json DEFAULT NULL.
+    - movies: json DEFAULT NUL.
+
+* La tabla movie contará con los siguientes campos:
+    - id_movie: int NOT NULL AUTO_INCREMENT.
+    - popularity: float DEFAULT NULL.
+    - vote_count: int DEFAULT NULL.
+    - video: tinyint(1) DEFAULT NULL.
+    - poster_path: varchar(250) DEFAULT NULL.
+    - id: int DEFAULT NULL.
+    - adult: tinyint(1) DEFAULT NULL.
+    - backdrop_path: varchar(250) DEFAULT NULL.
+    - original_language: varchar(250) DEFAULT NULL.
+    - original_title: varchar(250) DEFAULT NULL.
+    - genre_ids: json DEFAULT NULL.
+    - title: varchar(250) DEFAULT NULL.
+    - vote_average: float DEFAULT NULL.
+    - overview: text.
+    - release_date: varchar(250) DEFAULT NUL.

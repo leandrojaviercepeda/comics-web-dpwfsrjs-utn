@@ -1,0 +1,13 @@
+Desarrollar y diseñar un sitio utilizando todo lo aprendido en el curso. Para aprobar el curso el proyecto deberá tener las siguientes características.
+
+Contar con al menos 4 secciones distintas
+El frontend debe estar desarrrollado en React.js.
+Implementar Node.js como lenguaje de servidor y Handlebars como motor de plantillas.
+Enviar mails mediante un formulario.
+Realizar las 4 operaciones básicas de las bases de datos: leer, escribir, modificar y eliminar registros de una tabla.
+El sitio o aplicación debe ser totalmente navegable.
+
+
+Formato de entrega
+
+La entrega del proyecto se deberá realizar desplegando el código y su base de datos en la plataforma Heroku siguiendo las instrucciones dadas en el curso. Se deberá adjuntar también un video del proyecto funcionando donde se recorran las secciones principales y se muestren todas las características funcionando. El video puede ser subido a Youtube. Además se deberá proveer un link al repositorio de Github donde se haya realizado el desarrollo. Esto incluye los archivos package.json con las dependencias y un archivo SQL con la base de datos exportada. No incluir la carpeta node_modules.
