@@ -3,7 +3,7 @@ import {Message} from 'primereact/message';
 import CharCard from '../Character/CharCard'
 import {ProgressSpinner} from 'primereact/progressspinner';
 import axios from 'axios'
-import {ApiUrlBase} from '../../utils/constants'
+import {API_COMICS} from '../../utils/constants'
 
 export default function CharsList(props) {
     const [status, setStatus] = useState({showMessage: false, type: '', message:''})
@@ -12,7 +12,7 @@ export default function CharsList(props) {
     
     useEffect(() => {
         try {
-            axios.get(props.listSelected === 'all' ? `${ApiUrlBase}/character` : `${ApiUrlBase}/character?house=${props.listSelected}`)
+            axios.get(props.listSelected === 'all' ? `${API_COMICS}/character` : `${API_COMICS}/character?house=${props.listSelected}`)
             .then((response => {
                 setCharacters(response.data)
             }))

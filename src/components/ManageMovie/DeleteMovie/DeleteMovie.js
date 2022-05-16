@@ -7,7 +7,7 @@ import {Message} from 'primereact/message';
 import {Panel} from 'primereact/panel';
 import {OverlayPanel} from 'primereact/overlaypanel';
 import axios from 'axios'
-import {ApiUrlBase} from '../../../utils/constants'
+import {API_COMICS} from '../../../utils/constants'
 
 export default function DeleteMovie(props) {
     var op = {toggle: e => e}
@@ -23,7 +23,7 @@ export default function DeleteMovie(props) {
             if (loaded.current) return
             if (!items) {
                 loaded.current = true
-                axios.get(`${ApiUrlBase}/movie`)
+                axios.get(`${API_COMICS}/movie`)
                 .then((response) => {
                     setItems(response.data)
                 })
@@ -56,7 +56,7 @@ export default function DeleteMovie(props) {
     const handleDeleteMovie = id => {
         try{
             setDisabled(true)
-            axios.delete(`${ApiUrlBase}/movie/${id}`)
+            axios.delete(`${API_COMICS}/movie/${id}`)
             .then(() => {
                 handleStatus(true, 'success', '¡Pelicula eliminada exitosamente! :)')
                 setInterval(() => {

@@ -8,10 +8,10 @@ import {Message} from 'primereact/message'
 import {ScrollPanel} from 'primereact/scrollpanel'
 import {Card} from 'primereact/card'
 import axios from 'axios'
-import {ApiUrlBase} from '../../utils/constants'
-import {TheMovieDBImagesUrlBase} from '../../utils/constants'
-import {TheMovieDBUrlBase} from '../../utils/constants'
-import {TheMovieDB} from '../../utils/credentials'
+import {API_COMICS} from '../../utils/constants'
+import {API_MOVIE_DB_IMG} from '../../utils/constants'
+import {API_MOVIE_DB} from '../../utils/constants'
+import {APIKEY_MOVIE_DB} from '../../utils/constants'
 import {HandleImgError} from '../../utils/functions'
 import {getMovieCharacters} from '../ManageMovie/functions'
 
@@ -30,13 +30,13 @@ export default function MovieDetail(props) {
             loaded.current = true
             if (id || props.id) {
                 Promise.all([
-                    axios.get(`${ApiUrlBase}/movie/${id ? id : props.id}`),
-                    axios.get(`${ApiUrlBase}/character`),
+                    axios.get(`${API_COMICS}/movie/${id ? id : props.id}`),
+                    axios.get(`${API_COMICS}/character`),
                 ])
                 .then((responses) => {
                     setMovie(responses[0].data)
                     if (responses[0].data && responses[0].data.id) {
-                        axios.get(`${TheMovieDBUrlBase}/movie/${responses[0].data.id}/credits?api_key=${TheMovieDB}`)
+                        axios.get(`${API_MOVIE_DB}/movie/${responses[0].data.id}/credits?api_key=${APIKEY_MOVIE_DB}`)
                         .then((response) => {
                             setCredits(response.data)
                             if (responses[1].data && response.data) {
@@ -92,7 +92,7 @@ export default function MovieDetail(props) {
                                     movie.poster_path !== ''
                                     ?   
                                         <img 
-                                            src={`${TheMovieDBImagesUrlBase}${movie.poster_path}`} 
+                                            src={`${API_MOVIE_DB_IMG}${movie.poster_path}`} 
                                             key={movie.id} 
                                             alt={`img`} 
                                             onError={e => HandleImgError(e)}

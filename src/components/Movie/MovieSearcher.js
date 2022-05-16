@@ -3,8 +3,8 @@ import {Button} from 'primereact/button';
 import {AutoComplete} from 'primereact/autocomplete';
 import {Message} from 'primereact/message';
 import axios from 'axios'
-import {TheMovieDBUrlBase} from '../../utils/constants'
-import {TheMovieDB} from '../../utils/credentials'
+import {API_MOVIE_DB} from '../../utils/constants'
+import {APIKEY_MOVIE_DB} from '../../utils/constants'
 
 export default function MovieSearcher(props) {
     const [status, setStatus] = useState({showMessage: false, type: '', message:''})
@@ -23,7 +23,7 @@ export default function MovieSearcher(props) {
 
     const searchMovies = async () => {
         try {
-            const moviesFetched = await axios.get(`${TheMovieDBUrlBase}/search/movie?api_key=${TheMovieDB}&query=${searched}`)
+            const moviesFetched = await axios.get(`${API_MOVIE_DB}/search/movie?api_key=${APIKEY_MOVIE_DB}&query=${searched}`)
             const moviesList = moviesFetched.data.results
             setMovies(moviesList)
             setSuggestions(moviesList.map(movie => movie.title))

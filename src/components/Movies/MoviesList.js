@@ -3,7 +3,7 @@ import {Message} from 'primereact/message';
 import MovieCard from '../Movie/MovieCard'
 import {ProgressSpinner} from 'primereact/progressspinner';
 import axios from 'axios'
-import {ApiUrlBase} from '../../utils/constants'
+import {API_COMICS} from '../../utils/constants'
 
 export default function MoviesList(props) {
     const [status, setStatus] = useState({showMessage: false, type: '', message:''})
@@ -15,7 +15,7 @@ export default function MoviesList(props) {
         try {
             if (loaded.current) return
             loaded.current = true
-            axios.get(`${ApiUrlBase}/movie`)
+            axios.get(`${API_COMICS}/movie`)
             .then((response => {
                 setMovies(response.data)
             }))

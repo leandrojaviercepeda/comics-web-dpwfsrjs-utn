@@ -1,6 +1,6 @@
 import React from 'react'
 import {Card} from 'primereact/card'
-import {TheMovieDBImagesUrlBase} from '../../utils/constants'
+import {API_MOVIE_DB_IMG} from '../../utils/constants'
 import {HandleImgError} from '../../utils/functions'
 
 export default function CharCard(props) {
@@ -8,7 +8,7 @@ export default function CharCard(props) {
     const header = (
         <img 
             alt="Card" 
-            src={`${TheMovieDBImagesUrlBase}${props.movie.poster_path}`}
+            src={`${API_MOVIE_DB_IMG}${props.movie.poster_path}`}
             onError={e => HandleImgError(e)}
         />
     );

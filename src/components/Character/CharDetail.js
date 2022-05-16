@@ -6,7 +6,7 @@ import {Message} from 'primereact/message'
 import "react-responsive-carousel/lib/styles/carousel.min.css" // requires a loader
 import {Carousel} from 'react-responsive-carousel'
 import axios from 'axios'
-import {ApiUrlBase} from '../../utils/constants'
+import {API_COMICS} from '../../utils/constants'
 import {HandleImgError} from '../../utils/functions'
 import {capitalize} from '../../utils/functions'
 
@@ -31,8 +31,8 @@ export default function CharDetail(props) {
             loaded.current = true
             if (id || props.id) {
                 Promise.all([
-                    axios.get(`${ApiUrlBase}/character/${id ? id : props.id}`),
-                    axios.get(`${ApiUrlBase}/movie`),
+                    axios.get(`${API_COMICS}/character/${id ? id : props.id}`),
+                    axios.get(`${API_COMICS}/movie`),
                 ])
                 .then((responses) => {
                     setCharacter(responses[0].data)

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {ApiUrlBase} from '../../utils/constants'
+import {API_COMICS} from '../../utils/constants'
 import { InputText } from 'primereact/inputtext'
 import { InputTextarea } from 'primereact/inputtextarea'
 import axios from 'axios'
@@ -38,7 +38,7 @@ export default function Contact(props) {
             ) 
                 return handleStatus(true, 'info', 'Todos los campos deben estar completos.')
             
-            const response = await axios.post(`${ApiUrlBase}/contact`, form)
+            const response = await axios.post(`${API_COMICS}/contact`, form)
             if (response) {
                 handleStatus(true, 'success', '¡Email enviado exitosamente! :)')
                 setInterval(() => handleStatus(false), 2000)

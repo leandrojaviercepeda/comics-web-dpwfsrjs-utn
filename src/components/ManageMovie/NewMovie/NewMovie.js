@@ -5,10 +5,10 @@ import {Message} from 'primereact/message'
 import "react-responsive-carousel/lib/styles/carousel.min.css" // requires a loader
 import {Carousel} from 'react-responsive-carousel'
 import axios from 'axios'
-import {ApiUrlBase} from '../../../utils/constants'
-import {TheMovieDBUrlBase} from '../../../utils/constants'
-import {TheMovieDBImagesUrlBase} from '../../../utils/constants'
-import {TheMovieDB} from '../../../utils/credentials'
+import {API_COMICS} from '../../../utils/constants'
+import {API_MOVIE_DB} from '../../../utils/constants'
+import {API_MOVIE_DB_IMG} from '../../../utils/constants'
+import {APIKEY_MOVIE_DB} from '../../../utils/constants'
 import {HandleImgError} from '../../../utils/functions'
 import {getMovieCharacters} from '../functions'
 
@@ -22,8 +22,8 @@ export default function NewMovie() {
         try {
             if (movie && movie.id) {
                 Promise.all([
-                    axios.get(`${ApiUrlBase}/character`),
-                    axios.get(`${TheMovieDBUrlBase}/movie/${movie.id}/credits?api_key=${TheMovieDB}`),
+                    axios.get(`${API_COMICS}/character`),
+                    axios.get(`${API_MOVIE_DB}/movie/${movie.id}/credits?api_key=${APIKEY_MOVIE_DB}`),
                 ])
                 .then((responses) => {
                     if (responses[0]?.data && responses[1]?.data?.cast) {
@@ -46,10 +46,10 @@ export default function NewMovie() {
             const promises = []
             if (Array.isArray(knownMovieChars) && knownMovieChars.length > 0) {
                 for (const char of knownMovieChars) {
-                    promises.push(axios.put(`${ApiUrlBase}/character/${char?.id_charact}`, {...char, movies: [...char.movies, movie.title]}))
+                    promises.push(axios.put(`${API_COMICS}/character/${char?.id_charact}`, {...char, movies: [...char.movies, movie.title]}))
                 }
             }
-            promises.push(axios.post(`${ApiUrlBase}/movie`, movie))
+            promises.push(axios.post(`${API_COMICS}/movie`, movie))
             
             Promise.all(promises)
             .then(() => {
@@ -95,7 +95,7 @@ export default function NewMovie() {
                             movie
                             ?
                                 <img 
-                                    src={`${TheMovieDBImagesUrlBase}${movie.poster_path}`}
+                                    src={`${API_MOVIE_DB_IMG}${movie.poster_path}`}
                                     key="1"
                                     alt="img-1"
                                     onError={e => HandleImgError(e)}

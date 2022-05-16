@@ -11,7 +11,7 @@ import {Button} from 'primereact/button'
 import "react-responsive-carousel/lib/styles/carousel.min.css" // requires a loader
 import {Carousel} from 'react-responsive-carousel'
 import axios from 'axios'
-import {ApiUrlBase} from '../../../utils/constants'
+import {API_COMICS} from '../../../utils/constants'
 import {capitalize} from '../../../utils/functions'
 import { HandleImgError } from '../../../utils/functions'
 import "./css/style.css"
@@ -29,7 +29,7 @@ export default function EditChar(props) {
             if (loaded.current) return
             if (house) {
                 loaded.current = true
-                axios.get(`${ApiUrlBase}/character?house=${house === 'dc' ? house.toLocaleUpperCase() : capitalize(house)}`)
+                axios.get(`${API_COMICS}/character?house=${house === 'dc' ? house.toLocaleUpperCase() : capitalize(house)}`)
                 .then((response) => {
                     setItems(response.data)
                 })
@@ -82,7 +82,7 @@ export default function EditChar(props) {
             }
 
             setDisabled(true)
-            axios.put(`${ApiUrlBase}/character/${character?.id_charact}`, character)
+            axios.put(`${API_COMICS}/character/${character?.id_charact}`, character)
             .then(() => {
                 handleStatus(true, 'success', '¡Personaje editado exitosamente! :)')
                 setInterval(() => {

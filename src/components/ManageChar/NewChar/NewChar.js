@@ -10,7 +10,7 @@ import {Button} from 'primereact/button'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 import {Carousel} from 'react-responsive-carousel'
 import axios from 'axios'
-import {ApiUrlBase} from '../../../utils/constants'
+import {API_COMICS} from '../../../utils/constants'
 import {capitalize} from '../../../utils/functions'
 import { HandleImgError } from '../../../utils/functions'
 
@@ -52,7 +52,7 @@ export default function NewChar(props) {
             ) 
                 return handleStatus(true, 'info', 'Debe tener en cuenta que los campos vacíos permitidos son "Nombre" y "Equipamiento", ademas la cantidad de imagenes para mostrar debe ser menor o igual a las ingresadas.')
             
-            const response = await axios.post(`${ApiUrlBase}/character`, character)
+            const response = await axios.post(`${API_COMICS}/character`, character)
             if (response) {
                 handleStatus(true, 'success', '¡Personaje guardado exitosamente! :)')
                 setInterval(() => handleStatus(false), 2000)

@@ -9,7 +9,7 @@ import {Panel} from 'primereact/panel'
 import {OverlayPanel} from 'primereact/overlaypanel'
 import axios from 'axios'
 import {capitalize} from '../../../utils/functions'
-import {ApiUrlBase} from '../../../utils/constants'
+import {API_COMICS} from '../../../utils/constants'
 
 export default function DeleteChar(props) {
     let {house} = useParams()
@@ -26,7 +26,7 @@ export default function DeleteChar(props) {
             if (loaded.current) return
             if (house) {
                 loaded.current = true
-                axios.get(`${ApiUrlBase}/character?house=${house === 'dc' ? house.toLocaleUpperCase() : capitalize(house)}`)
+                axios.get(`${API_COMICS}/character?house=${house === 'dc' ? house.toLocaleUpperCase() : capitalize(house)}`)
                 .then((response) => {
                     setItems(response.data)
                 })
@@ -58,7 +58,7 @@ export default function DeleteChar(props) {
     const handleDeleteChar = id => {
         try{
             setDisabled(true)
-            axios.delete(`${ApiUrlBase}/character/${id}`)
+            axios.delete(`${API_COMICS}/character/${id}`)
             .then(() => {
                 handleStatus(true, 'success', '¡Personaje eliminado exitosamente! :)')
                 setInterval(() => {
