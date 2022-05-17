@@ -20,6 +20,7 @@ export default function CharDetail(props) {
     const handleStatus = (showMessage, type='', message='') => setStatus({showMessage: showMessage, type: type, message: message})
 
     const filterCharacterMovies = (movies, characterMovies) => {
+        if (!movies || ! characterMovies) return []
         const moviesNames = [...movies.map(movie => movie.title)]
         const moviesNamesOfThisCharacter = [...moviesNames.filter(movie => characterMovies.includes(movie))]
         return [...movies.filter(movie => moviesNamesOfThisCharacter.includes(movie.title))]

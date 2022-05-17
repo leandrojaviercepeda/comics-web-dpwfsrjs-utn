@@ -24,6 +24,7 @@ export default function NewChar(props) {
         biography: '',
         equipment: [],
         images: [],
+        movies: [],
         amount_images: 0,
     }
     const [status, setStatus] = useState({showMessage: false, type: '', message:''})
