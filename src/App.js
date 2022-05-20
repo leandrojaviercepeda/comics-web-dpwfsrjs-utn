@@ -13,6 +13,12 @@ import Contact from './components/Contact'
 import NotFound from './components/NotFound'
 
 function App() {
+  console.warn({
+    REACT_APP_API_COMICS: process.env.REACT_APP_API_COMICS,
+    REACT_APP_API_MOVIE_DB: process.env.REACT_APP_API_MOVIE_DB,
+    REACT_APP_API_MOVIE_DB_IMG: process.env.REACT_APP_API_MOVIE_DB_IMG,
+    REACT_APP_APIKEY_MOVIE_DB: process.env.REACT_APP_APIKEY_MOVIE_DB,
+  })
   return (
     <BrowserRouter>
       <Switch>
